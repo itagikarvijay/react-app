@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-react-app
+    working_dir: /app
+    ports:
+      - '5173:5173'
+    volumes:
+      - .:/app
+      - app_node_modules:/app/node_modules
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    environment:
+      CHOKIDAR_USEPOLLING: 'true'
+      VITE_API_URL: http://localhost:9092
+    depends_on:
+      - envoy
+
+  envoy:
+    image: envoyproxy/envoy:v1.29-latest
+    container_name: grpc-web-envoy
+    ports:
+      - '9092:9092'
+      - '9901:9090'
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml:ro
+    command: -c /etc/envoy/envoy.yaml
+
+volumes:
+  app_node_modules:

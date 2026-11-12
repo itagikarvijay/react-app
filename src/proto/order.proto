@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.order.grpc";
+option java_outer_classname = "OrderProto";
+
+service OrderService {
+  rpc GetOrder(OrderId) returns (OrderResponse);
+}
+
+message OrderId {
+  int32 id = 1;
+}
+
+message OrderResponse {
+  int32 id = 1;
+  string status = 2;
+}

@@ -1,0 +1,53 @@
+{
+  "name": "my-react-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "preview": "vite preview",
+    "gen:grpc": "protoc -I=src/proto --js_out=import_style=commonjs:src/generated --grpc-web_out=mode=grpcwebtext:src/generated src/proto/order.proto && node scripts/fix-proto-length.cjs"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.4",
+    "@grpc/proto-loader": "^0.8.1",
+    "@reduxjs/toolkit": "^2.12.0",
+    "axios": "^1.18.0",
+    "date-fns": "^4.4.0",
+    "google-protobuf": "^4.0.2",
+    "grpc-web": "^2.1.1",
+    "react": "^19.2.6",
+    "react-datepicker": "^9.1.0",
+    "react-dom": "^19.2.6",
+    "react-redux": "^9.3.0",
+    "react-router-dom": "^7.18.0",
+    "recharts": "^3.8.1",
+    "redux-logger": "^3.0.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/google-protobuf": "^3.15.12",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/redux-logger": "^3.0.13",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.0.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "prettier": "^3.5.3",
+    "protoc": "^36.0.0",
+    "protoc-gen-grpc-web": "^1.5.0",
+    "protoc-gen-js": "^3.21.4-4",
+    "ts-proto": "^2.12.1",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12"
+  }
+}
